@@ -54,50 +54,84 @@ enum {
 #define Key_Plus        LSHIFT(Key_Equals)
 
 enum {
-  QWERTY,
-  FUN,
-  UPPER
+  QWE,
+  SYM,
+  NAV
 };
 
 // clang-format off
 KEYMAPS(
-  [QWERTY] = KEYMAP_STACKED
+    /* Qwerty
+     * ,----------------------------------.             ,----------------------------------.
+     * |   Q  |   W  |   E  |   R  |   T  |             |   Y  |   U  |   I  |   O  |   P  |
+     * |------+------+------+------+------|             |------+------+------+------+------|
+     * |   A  |   S  |   D  |   F  |   G  |             |   H  |   J  |   K  |   L  |   ;  |
+     * |------+------+------+------+------+-------------+------+------+------+------+------|
+     * |   Z  |   X  |   C  |   V  |   B  | DEL  | BKSP |   N  |   M  |   ,  |   .  |   /  |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Shift| GUI  | Ctrl | RAlt | SPC  | ESC  | TAB  | ENT  | RAlt | Ctrl | GUI  |Shift |
+     * |      |      |      | (Alt)|(_NAV)|      |      |(_SYM)| (Alt)|      |      |      |
+     * `-----------------------------------------------------------------------------------'
+     */
+  [QWE] = KEYMAP_STACKED
   (
-       Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
-      ,Key_A   ,Key_S   ,Key_D       ,Key_F         ,Key_G
-      ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B, Key_Backtick
-      ,Key_Esc ,Key_Tab ,Key_LeftGui ,Key_LeftShift ,Key_Backspace ,Key_LeftControl
+       Key_Q         ,Key_W       ,Key_E           ,Key_R                 ,Key_T
+      ,Key_A         ,Key_S       ,Key_D           ,Key_F                 ,Key_G
+      ,Key_Z         ,Key_X       ,Key_C           ,Key_V                 ,Key_B          ,Key_Delete
+      ,Key_LeftShift ,Key_LeftGui ,Key_LeftControl ,MT(RightAlt, LeftAlt) ,LT(NAV, Space) ,Key_Esc
 
-                     ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
-                     ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
-       ,Key_Backslash,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
-       ,Key_LeftAlt  ,Key_Space ,MO(FUN)    ,Key_Minus ,Key_Quote  ,Key_Enter
+                      ,Key_Y          ,Key_U                 ,Key_I            ,Key_O         ,Key_P
+                      ,Key_H          ,Key_J                 ,Key_K            ,Key_L         ,Key_Semicolon
+       ,Key_Backspace ,Key_N          ,Key_M                 ,Key_Comma        ,Key_Period    ,Key_Slash
+       ,Key_Tab       ,LT(SYM, Enter) ,MT(RightAlt, LeftAlt) ,Key_RightControl ,Key_RightGui  ,Key_RightShift
   ),
 
-  [FUN] = KEYMAP_STACKED
+    /* Symbols
+     * ,----------------------------------.             ,----------------------------------.
+     * |   !  |   @  |   #  |   $  |   %  |             |   ^  |   &  |   *  |      |  -   |
+     * |------+------+------+------+------|             |------+------+------+------+------|
+     * |   `  |   '  |   (  |   [  |   {  |             |   }  |   ]  |   )  |  =   |  \   |
+     * |------+------+------+------+------+-------------+------+------+------+------+------|
+     * |   1  |   2  |   3  |   4  |   5  |      |      |   6  |   7  |   8  |   9  |   0  |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Shift| GUI  | Ctrl | LAlt | CapsL|      |      |  ▽  | LAlt | Ctrl | GUI  |Shift |
+     * `-----------------------------------------------------------------------------------'
+     */
+  [SYM] = KEYMAP_STACKED
   (
-       Key_Exclamation ,Key_At           ,Key_UpArrow   ,Key_Dollar           ,Key_Percent
-      ,Key_LeftParen   ,Key_LeftArrow    ,Key_DownArrow ,Key_RightArrow       ,Key_RightParen
-      ,Key_LeftBracket ,Key_RightBracket ,Key_Hash      ,Key_LeftCurlyBracket ,Key_RightCurlyBracket ,Key_Caret
-      ,TG(UPPER)       ,Key_Insert       ,Key_LeftGui   ,Key_LeftShift        ,Key_Delete         ,Key_LeftControl
+       Key_Exclamation ,Key_At      ,Key_Hash        ,Key_Dollar      ,Key_Percent
+      ,Key_Backtick    ,Key_Quote   ,Key_LeftParen   ,Key_LeftBracket ,Key_LeftCurlyBracket
+      ,Key_1           ,Key_2       ,Key_3           ,Key_4           ,Key_5                ,Key_NoKey
+      ,Key_LeftShift   ,Key_LeftGui ,Key_LeftControl ,Key_LeftAlt     ,Key_CapsLock         ,Key_NoKey
 
-                   ,Key_PageUp   ,Key_7 ,Key_8      ,Key_9 ,Key_Backspace
-                   ,Key_PageDown ,Key_4 ,Key_5      ,Key_6 ,___
-      ,Key_And     ,Key_Star     ,Key_1 ,Key_2      ,Key_3 ,Key_Plus
-      ,Key_LeftAlt ,Key_Space    ,___   ,Key_Period ,Key_0 ,Key_Equals
+                  ,Key_Caret             ,Key_And          ,Key_Star         ,Key_NoKey    ,Key_Minus
+                  ,Key_RightCurlyBracket ,Key_RightBracket ,Key_RightParen   ,Key_Equals   ,Key_Backslash
+      ,Key_NoKey  ,Key_6                 ,Key_7            ,Key_8            ,Key_9        ,Key_0
+      ,Key_NoKey  ,Key_NoKey             ,Key_LeftAlt      ,Key_RightControl ,Key_RightGui ,Key_RightShift
    ),
 
-  [UPPER] = KEYMAP_STACKED
+    /* Navigation
+     * ,----------------------------------.             ,----------------------------------.
+     * |      |      |      |      |      |             |      |      | Home | End  | PgUp |
+     * |------+------+------+------+------|             |------+------+------+------+------|
+     * |      |      |      |      |      |             | Left | Down | Up   | Right| PgDn |
+     * |------+------+------+------+------+-------------+------+------+------+------+------|
+     * |      |      |      |      |      |      |      |      |      |      |      |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Shift| GUI  | Ctrl |  Alt |  ▽  |      |      |      |  Alt | Ctrl | GUI  |Shift |
+     * `-----------------------------------------------------------------------------------'
+     */
+  [NAV] = KEYMAP_STACKED
   (
-       Key_Insert            ,Key_Home                 ,Key_UpArrow   ,Key_End        ,Key_PageUp
-      ,Key_Delete            ,Key_LeftArrow            ,Key_DownArrow ,Key_RightArrow ,Key_PageDown
-      ,M(MACRO_VERSION_INFO) ,Consumer_VolumeIncrement ,XXX           ,XXX            ,___ ,___
-      ,MoveToLayer(QWERTY)   ,Consumer_VolumeDecrement ,___           ,___            ,___ ,___
+       Key_NoKey     ,Key_NoKey   ,Key_NoKey       ,Key_NoKey   ,Key_NoKey
+      ,Key_NoKey     ,Key_NoKey   ,Key_NoKey       ,Key_NoKey   ,Key_NoKey
+      ,Key_NoKey     ,Key_NoKey   ,Key_NoKey       ,Key_NoKey   ,Key_NoKey ,Key_NoKey
+      ,Key_LeftShift ,Key_LeftGui ,Key_LeftControl ,Key_LeftAlt ,Key_NoKey ,Key_NoKey
 
-                ,Key_UpArrow   ,Key_F7              ,Key_F8          ,Key_F9         ,Key_F10
-                ,Key_DownArrow ,Key_F4              ,Key_F5          ,Key_F6         ,Key_F11
-      ,___      ,XXX           ,Key_F1              ,Key_F2          ,Key_F3         ,Key_F12
-      ,___      ,___           ,MoveToLayer(QWERTY) ,Key_PrintScreen ,Key_ScrollLock ,Consumer_PlaySlashPause
+                 ,Key_NoKey     ,Key_NoKey     ,Key_Home         ,Key_End        ,Key_PageUp
+                 ,Key_LeftArrow ,Key_DownArrow ,Key_UpArrow      ,Key_RightArrow ,Key_PageDown
+      ,Key_NoKey ,Key_NoKey     ,Key_NoKey     ,Key_NoKey        ,Key_NoKey      ,Key_NoKey
+      ,Key_NoKey ,Key_NoKey     ,Key_LeftAlt   ,Key_RightControl ,Key_RightGui   ,Key_RightShift
    )
 )
 // clang-format on
@@ -181,7 +215,7 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
       // reasons. We used to use it in place of `MoveToLayer(QWERTY)`, but no
       // longer do. We keep it so that if someone still has the old layout with
       // the macro in EEPROM, it will keep working after a firmware update.
-      Layer.move(QWERTY);
+      Layer.move(QWE);
       break;
     case MACRO_VERSION_INFO:
       Macros.type(PSTR("Keyboardio Atreus - Kaleidoscope "));
@@ -203,6 +237,15 @@ void setup() {
   LayerNames.reserve_storage(63);
 
   Layer.move(EEPROMSettings.default_layer());
+
+  // QUKEYS(
+  //   kaleidoscope::plugin::Qukey(QWE, KeyAddr(3, 4), ShiftToLayer(NAV)), // Space -> NAV
+  //   kaleidoscope::plugin::Qukey(QWE, KeyAddr(3, 7), ShiftToLayer(SYM))) // Enter -> Sym
+  // Qukeys.setHoldTimeout(1000);
+  // Qukeys.setMaxIntervalForTapRepeat(150);
+  // Qukeys.setOverlapThreshold(50);
+  // Qukeys.setMinimumHoldTime(100);
+  // Qukeys.setMinimumPriorInterval(80);
 
   // To avoid any surprises, SpaceCadet is turned off by default. However, it
   // can be permanently enabled via Chrysalis, so we should only disable it if
