@@ -69,21 +69,21 @@ KEYMAPS(
      * |------+------+------+------+------+-------------+------+------+------+------+------|
      * |   Z  |   X  |   C  |   V  |   B  | DEL  | BKSP |   N  |   M  |   ,  |   .  |   /  |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Shift| GUI  | Ctrl | RAlt | SPC  | ESC  | TAB  | ENT  | RAlt | Ctrl | GUI  |Shift |
+     * | Shift| Ctrl | GUI  | RAlt | SPC  | ESC  | TAB  | ENT  | RAlt | GUI  | Ctrl |Shift |
      * |      |      |      | (Alt)|(_NAV)|      |      |(_SYM)| (Alt)|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
   [QWE] = KEYMAP_STACKED
   (
-       Key_Q         ,Key_W       ,Key_E           ,Key_R                 ,Key_T
-      ,Key_A         ,Key_S       ,Key_D           ,Key_F                 ,Key_G
-      ,Key_Z         ,Key_X       ,Key_C           ,Key_V                 ,Key_B          ,Key_Delete
-      ,Key_LeftShift ,Key_LeftGui ,Key_LeftControl ,MT(RightAlt, LeftAlt) ,LT(NAV, Space) ,Key_Esc
+       Key_Q         ,Key_W           ,Key_E       ,Key_R                 ,Key_T
+      ,Key_A         ,Key_S           ,Key_D       ,Key_F                 ,Key_G
+      ,Key_Z         ,Key_X           ,Key_C       ,Key_V                 ,Key_B          ,Key_Delete
+      ,Key_LeftShift ,Key_LeftControl ,Key_LeftGui ,MT(RightAlt, LeftAlt) ,LT(NAV, Space) ,Key_Esc
 
-                      ,Key_Y          ,Key_U                 ,Key_I            ,Key_O         ,Key_P
-                      ,Key_H          ,Key_J                 ,Key_K            ,Key_L         ,Key_Semicolon
-       ,Key_Backspace ,Key_N          ,Key_M                 ,Key_Comma        ,Key_Period    ,Key_Slash
-       ,Key_Tab       ,LT(SYM, Enter) ,MT(RightAlt, LeftAlt) ,Key_RightControl ,Key_RightGui  ,Key_RightShift
+                      ,Key_Y          ,Key_U                 ,Key_I        ,Key_O             ,Key_P
+                      ,Key_H          ,Key_J                 ,Key_K        ,Key_L             ,Key_Semicolon
+       ,Key_Backspace ,Key_N          ,Key_M                 ,Key_Comma    ,Key_Period        ,Key_Slash
+       ,Key_Tab       ,LT(SYM, Enter) ,MT(RightAlt, LeftAlt) ,Key_RightGui ,Key_RightControl  ,Key_RightShift
   ),
 
     /* Symbols
@@ -94,20 +94,20 @@ KEYMAPS(
      * |------+------+------+------+------+-------------+------+------+------+------+------|
      * |   1  |   2  |   3  |   4  |   5  |      |      |   6  |   7  |   8  |   9  |   0  |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Shift| GUI  | Ctrl | LAlt | CapsL|      |      |  ▽  | LAlt | Ctrl | GUI  |Shift |
+     * | Shift| Ctrl | GUI  | LAlt | CapsL|      |      |  ▽  | LAlt | GUI  | Ctrl |Shift |
      * `-----------------------------------------------------------------------------------'
      */
   [SYM] = KEYMAP_STACKED
   (
-       Key_Exclamation ,Key_At      ,Key_Hash        ,Key_Dollar      ,Key_Percent
-      ,Key_Backtick    ,Key_Quote   ,Key_LeftParen   ,Key_LeftBracket ,Key_LeftCurlyBracket
-      ,Key_1           ,Key_2       ,Key_3           ,Key_4           ,Key_5                ,Key_NoKey
-      ,Key_LeftShift   ,Key_LeftGui ,Key_LeftControl ,Key_LeftAlt     ,Key_CapsLock         ,Key_NoKey
+       Key_Exclamation ,Key_At          ,Key_Hash        ,Key_Dollar      ,Key_Percent
+      ,Key_Backtick    ,Key_Quote       ,Key_LeftParen   ,Key_LeftBracket ,Key_LeftCurlyBracket
+      ,Key_1           ,Key_2           ,Key_3           ,Key_4           ,Key_5                ,Key_NoKey
+      ,Key_LeftShift   ,Key_LeftControl ,Key_LeftGui     ,Key_LeftAlt     ,Key_CapsLock         ,Key_NoKey
 
-                  ,Key_Caret             ,Key_And          ,Key_Star         ,Key_NoKey    ,Key_Minus
-                  ,Key_RightCurlyBracket ,Key_RightBracket ,Key_RightParen   ,Key_Equals   ,Key_Backslash
-      ,Key_NoKey  ,Key_6                 ,Key_7            ,Key_8            ,Key_9        ,Key_0
-      ,Key_NoKey  ,Key_NoKey             ,Key_LeftAlt      ,Key_RightControl ,Key_RightGui ,Key_RightShift
+                  ,Key_Caret             ,Key_And          ,Key_Star         ,Key_NoKey        ,Key_Minus
+                  ,Key_RightCurlyBracket ,Key_RightBracket ,Key_RightParen   ,Key_Equals       ,Key_Backslash
+      ,Key_NoKey  ,Key_6                 ,Key_7            ,Key_8            ,Key_9            ,Key_0
+      ,Key_NoKey  ,Key_NoKey             ,Key_LeftAlt      ,Key_RightGui     ,Key_RightControl ,Key_RightShift
    ),
 
     /* Navigation
@@ -118,20 +118,20 @@ KEYMAPS(
      * |------+------+------+------+------+-------------+------+------+------+------+------|
      * |      |      |      |      |      |      |      |      |      |      |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Shift| GUI  | Ctrl |  Alt |  ▽  |      |      |      |  Alt | Ctrl | GUI  |Shift |
+     * | Shift| Ctrl | GUI  |  Alt |  ▽  |      |      |      |  Alt | GUI  | Ctrl |Shift |
      * `-----------------------------------------------------------------------------------'
      */
   [NAV] = KEYMAP_STACKED
   (
-       Key_NoKey     ,Key_NoKey   ,Key_NoKey       ,Key_NoKey   ,Key_NoKey
-      ,Key_NoKey     ,Key_NoKey   ,Key_NoKey       ,Key_NoKey   ,Key_NoKey
-      ,Key_NoKey     ,Key_NoKey   ,Key_NoKey       ,Key_NoKey   ,Key_NoKey ,Key_NoKey
-      ,Key_LeftShift ,Key_LeftGui ,Key_LeftControl ,Key_LeftAlt ,Key_NoKey ,Key_NoKey
+       Key_NoKey     ,Key_NoKey       ,Key_NoKey   ,Key_NoKey   ,Key_NoKey
+      ,Key_NoKey     ,Key_NoKey       ,Key_NoKey   ,Key_NoKey   ,Key_NoKey
+      ,Key_NoKey     ,Key_NoKey       ,Key_NoKey   ,Key_NoKey   ,Key_NoKey ,Key_NoKey
+      ,Key_LeftShift ,Key_LeftControl ,Key_LeftGui ,Key_LeftAlt ,Key_NoKey ,Key_NoKey
 
-                 ,Key_NoKey     ,Key_NoKey     ,Key_Home         ,Key_End        ,Key_PageUp
-                 ,Key_LeftArrow ,Key_DownArrow ,Key_UpArrow      ,Key_RightArrow ,Key_PageDown
-      ,Key_NoKey ,Key_NoKey     ,Key_NoKey     ,Key_NoKey        ,Key_NoKey      ,Key_NoKey
-      ,Key_NoKey ,Key_NoKey     ,Key_LeftAlt   ,Key_RightControl ,Key_RightGui   ,Key_RightShift
+                 ,Key_NoKey     ,Key_NoKey     ,Key_Home     ,Key_End          ,Key_PageUp
+                 ,Key_LeftArrow ,Key_DownArrow ,Key_UpArrow  ,Key_RightArrow   ,Key_PageDown
+      ,Key_NoKey ,Key_NoKey     ,Key_NoKey     ,Key_NoKey    ,Key_NoKey        ,Key_NoKey
+      ,Key_NoKey ,Key_NoKey     ,Key_LeftAlt   ,Key_RightGui ,Key_RightControl ,Key_RightShift
    )
 )
 // clang-format on
